@@ -1,3 +1,10 @@
+/**
+ * counting-component.js is a JavaScript module demonstrating a
+ * counting web component. 
+ *
+ * by R. S. Doiel, copyright (c) 2022
+ * This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. 
+ */
 "use strict";
 /* CountingComponent had a button and a msg sub element. Counts by 3. */
 class CountingComponent extends HTMLElement {
