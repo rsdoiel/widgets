@@ -1,0 +1,5 @@
+# Ignore backup copies of files
+*.bak
+*.tmp
+*.swp
+*~

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Web Component Test</title>
+        <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
+        <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
+        <link rel="stylesheet" href="css/site.css" />
+        <style>
+            minimal-component {
+                padding: 1em;
+                width: auto;
+                height: auto;
+                display: block;
+                border: green solid;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./">Widgets</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1>A Minimal Web Component Example</h1>
+            <div id="demo">This is where the &quot;minimal component&quot; should display. It'll be an empty green bordered box (as defined by the style block in the head element).</div>
+        </section>
+        <script type="module" src="js/minimal-component.js"></script>
+        <script type="module">
+            "use strict";
+            var demo = document.getElementById('demo'),
+                box = document.createElement('minimal-component');
+            demo.appendChild(box);
+        </script>
+    </body>
+</html>
