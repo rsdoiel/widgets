@@ -16,32 +16,27 @@
         </nav>
         <section>
             <h1>An exploratory collection of widgets</h1>
-            <p>This is a small collection if simple web components (widgets) I created as I started to learn how to make them based on the documentation at Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">MDN</a> website. In each example I've attempt to explore a single aspect of the component. This project is hosted at GitHub at <a href="https://github.com/rsdoiel/widgets" target="_blank">github.com/rsdoiel/widgets</a>.
+            <p>This is a small collection of very simple web components (widgets). I created them as a means to understand the current state of web component (2022) based on the documentation at Mozilla's <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">MDN</a> website. In each example I've attempt to explore a single aspect of the component. This project is hosted at GitHub at <a href="https://github.com/rsdoiel/widgets" target="_blank">github.com/rsdoiel/widgets</a>.
             </p>
             <ol type="I">
                 <li>Getting started
                     <ol type="a">
-                        <li><a href="minimal-component.html">A minimal component</a>, <a href="js/minimal-component.js">definition</a></li>
-                        <li><a href="basic-component.html">A basic component</a>, <a href="js/basic-component.js">definition</a></li>
-                        <li><a href="counting-component.html">A counting component</a>, <a href="js/counting-component.js">definition</a></li>
-                        <li><a href="combined-markup-only.html">Combining the components in a single page</a></li>
+                        <li><a href="minimal-component.html">A minimal component</a>, this doesn't do much beyond inserting itself into the DOM</li>
+                        <li><a href="basic-component.html">A basic component</a> displays a predetermined string as a sub-element. This of it as a "hello World" like component.</li>
+                        <li><a href="counting-component.html">A counting component</a>. This has a button and a number displayed beside it. Press the button and the value increments.</a></li>
                     </ol>
                 </li>
                 <li>Templated components
                     <ol type="a">
-                        <li><a href="minimal-template-component.html">A minimal templated component</a>, <a href="js/minimal-template-component.js">definition</a></li>
-                        <li><a href="digital-clock-component.html">A digital clock component</a>, <a href="js/digital-clock.js">definition</a></li>
+                        <li><a href="minimal-template-component.html">A minimal templated component</a>, displays a box styled with the template's CSS.</li>
+                        <li><a href="digital-clock-component.html">A digital clock component</a>, displays a digital clock in an oval. Clock updates each second after it is instantiated in the page.</li>
                     </ol>
                 </li>
-                <li>Working with attributes
+                <li>Custom element's attributes, innerHTML and events
                     <ol type="a">
-                        <li><a href="orcid-component.html">an ORCID component</a>, <a href="js/orcid-component.js">definition</a>, uses the component's textContent for ORCID identifier</li>
                         <li><a href="person-name-component.html">A person name component</a>, <a href="js/person-name-component.js">definition</a>, uses the attributes in the custom element to format the textContent of the element.</li>
-                    </ol>
-                </li>
-                <li>Custom element life cycle
-                    <ol type="a">
-
+                        <li><a href="orcid-component.html">an ORCID component</a>, <a href="js/orcid-component.js">definition</a>, uses the component's textContent for ORCID identifier</li>
+                        <li><a href="person-input-component.html">A person input component</a>, <a href="js/person-input-component.js">definition</a>, set values of input fields via custom element attributes, when the input fields update the custom element attributes update too. Relies on component life cycle.
                     </ol>
                 </li>
             </ol>

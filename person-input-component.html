@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Minimal Web Component Test</title>
+        <title>A Person Input Web Component Example</title>
         <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
         <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
         <link rel="stylesheet" href="css/site.css" />
         <style>
-            minimal-component {
+            person-input-component {
                 padding: 1em;
                 width: auto;
                 height: auto;
                 display: block;
-                border: green solid;
+                border: lightseagreen solid;
             }
         </style>
     </head>
@@ -24,18 +24,19 @@
             </ul>
         </nav>
         <section>
-            <h1>A Minimal Web Component Example</h1>
-            <div id="demo">This is where the &quot;minimal component&quot; should display. 
-                It'll be an empty green bordered box (as defined by the style block in the head element).
-                <minimal-component></minimal-component>
+            <h1>A Person Input Web Component Example</h1>
+            <div id="demo">
+                <p>This is a demo of an &quot;Person Object component&quot; containing a person's name and orcid as input elements. The custom element also has a "read only" attribute called "value". This returns an object with the attributes representing each file. Another attribute called "as_json" returns the JSON representation.
+                </p>
+                <person-input-component given="R. S." family="Doiel" orcid="0000-0003-0900-6903"></person-input-component>
                 <p>HTML Usage:</p>
                 <code>
-                    &lt;minimal-component&gt;&lt;/minimal-component&gt;
+                    &lt;person-input-component given="R. S." family="Doiel"  orcid="0000-0003-0900-6903"&gt;&lt;/person-input-component&gt;
                 </code>
-                <p>JavaScript Module <a href="js/minimal-component.js">minimal component</a></p>
+                <p>JavaScript Module <a href="js/person-input-component.js">person input component</a></p>
             </div>
         </section>
-        <script type="module" src="js/minimal-component.js"></script>
+        <script type="module" src="js/person-input-component.js"></script>
         <footer>
             Copyright © 2022 R. S. Doiel all rights reserved. 
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
