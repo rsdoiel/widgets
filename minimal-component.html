@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Basic Web Component Test</title>
+        <title>Minimal Web Component Test</title>
         <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
         <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
         <link rel="stylesheet" href="css/site.css" />
         <style>
-            basic-component {
+            minimal-component {
                 padding: 1em;
                 width: auto;
                 height: auto;
                 display: block;
-                border: blue solid;
+                border: green solid;
             }
         </style>
     </head>
@@ -24,15 +24,12 @@
             </ul>
         </nav>
         <section>
-            <h1>A Basic Web Component Example</h1>
-            <div id="demo">This is where the &quot;basic component&quot; should display. I should be a blue bordered box (as defined in the style element in the head element). It has something to say.</div>
+            <h1>A Minimal Web Component Example</h1>
+            <div id="demo">This is where the &quot;minimal component&quot; should display. 
+                It'll be an empty green bordered box (as defined by the style block in the head element).
+                <minimal-component></minimal-component>
+            </div>
         </section>
-        <script type="module" src="js/basic-component.js"></script>
-        <script type="module">
-            "use strict";
-            var demo = document.getElementById('demo'),
-                box = document.createElement('basic-component');
-            demo.appendChild(box);
-        </script>
+        <script type="module" src="js/minimal-component.js"></script>
     </body>
 </html>

@@ -25,14 +25,11 @@
         </nav>
         <section>
             <h1>A Counting Web Component Example</h1>
-            <div id="demo">This is where the &quot;counting component&quot; should display. I should be a purple bordered box (as defined in the style element in the head element) with a button. Press the button.</div>
+            <div id="demo">This is where the &quot;counting component&quot; should display. 
+                I should be a purple bordered box (as defined in the style element in the head element) with a button. Press the button.
+                <counting-component></counting-component>
+            </div>
         </section>
         <script type="module" src="js/counting-component.js"></script>
-        <script type="module">
-            "use strict";
-            var demo = document.getElementById('demo'),
-                box = document.createElement('counting-component');
-            demo.appendChild(box);
-        </script>
     </body>
 </html>

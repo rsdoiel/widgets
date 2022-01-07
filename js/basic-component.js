@@ -11,6 +11,8 @@ class BasicComponent extends HTMLElement {
     constructor () {
         super();
         this.attachShadow({mode: 'open'});
+        /* NOTE: In the MDN website there is a "thumbs down" icon suggesting it is non-standard despite showing
+           all the common browsers supporting it. */
         this.shadowRoot.innerHTML = ' I am a basic component. ';
     }
 }
