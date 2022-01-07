@@ -21,7 +21,9 @@
         "web browser"
     ],
     "softwareRequirements": [
-        "Makefile, git"
+        "Makefile",
+        "git",
+        "bash"
     ],
     "relatedLink": [
         "https://rsdoiel.github.io/widgets"
@@ -32,11 +34,7 @@
             "@id": "https://orcid.org/0000-0003-0900-6903",
             "givenName": "R. S.",
             "familyName": "Doiel",
-            "email": "rsdoiel@gmail.com",
-            "affiliation": {
-                "@type": "Organization",
-                "name": "Caltech Library"
-            }
+            "email": "rsdoiel@gmail.com"
         }
     ]
 }
