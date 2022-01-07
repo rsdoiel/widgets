@@ -26,23 +26,28 @@
         <section>
             <h1>An ORCID Web Component Example</h1>
             <div id="demo">
-                <p>This is a demo of an &quot;ORCID component&quot;. The first invocation is implemented
-                using a standard "div" element with an "is" attribute of "orcid-component". If the
+                <p>This is a demo of an &quot;ORCID component&quot;. If the
                 component is installed and working it should take the "textContent" in the div and
                 render it as a link to https://orcid.org. 
                 </p>
-                <div class="orcid" is="orcid-component">0000-0003-0900-6903</div>
-                <p>I found the "is" attribute did not work for the "div" under the old version of Safari I have running on macOS.
-                    The custom element did work directly.</p>
                 <orcid-component>0000-0003-0900-6903</orcid-component>
                 <p>HTML Usage:</p>
-                <code><pre>
-                    &lt;div is="orcid-component"&gt;0000-0003-0900-6903&lt;/div&gt;
-                    <!-- workds on macOS Safari using the custom element notation -->
+                <code>
                     &lt;orcid-component&gt;0000-0003-0900-6903&lt;/orcid-component&gt;
-                </pre></code>
+                </code>
             </div>
+            <p>NOTE: The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is">MDN documentation</a>
+                suggests you can use a "standard" element with an "is" attribute to be backward compatible for legacy browser.
+                This specific custom element didn't work with using a "div" and an "is" attribute on macOS (Catalina)'s
+                versions of Safari, Chromeand Edge while using the custom element name did work fine. I am not sure if this
+                is a result of my implementation or a "feature" of the web component support in the browser.  The MDN site
+                indicates it should work across current versions of all browsers.
+            </p>
         </section>
         <script type="module" src="js/orcid-component.js"></script>
+        <footer>
+            Copyright © 2022 R. S. Doiel all rights reserved. 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </footer>
     </body>
 </html>

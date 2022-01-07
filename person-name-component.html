@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A Person Name Web Component Example</title>
+        <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
+        <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
+        <link rel="stylesheet" href="css/site.css" />
+        <style>
+            person-name-component {
+                padding: 1em;
+                width: auto;
+                height: auto;
+                display: block;
+                border: aquamarine solid;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./">Widgets</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1>A Person Name Web Component Example</h1>
+            <div id="demo">
+                <p>This is a demo of an &quot;Person Name component&quot;. Element has three custom attributes -- "given", "family" and "format". If "format" 
+                    is set to "sort" then the name will be render "family", "given" order, otherwise it is render "given" "family" order. The custom component needs
+                    to pull the values of the custom elements and then render the "testContent" of the enclosed element.</p>
+                <p>Display format: <person-name-component given="R. S." family="Doiel" format="display"></person-name-component></p>
+                <p>Sort format:    <person-name-component given="R. S." family="Doiel" format="sort"></person-name-component></p>
+                <p>HTML Usage:</p>
+                <code>
+                &lt;p&gt;Display format: &lt;person-name-component given="R. S." family="Doiel" format="display"&gt;&lt;/person-name-component&gt;&lt;/p&gt;
+                <br >
+                &lt;p&gt;Sort format: &lt;person-name-component given="R. S." family="Doiel" format="sort"&gt;&lt;/person-name-component&gt;&lt;/p&gt;
+                </code>
+            </div>
+    </section>
+        <script type="module" src="js/person-name-component.js"></script>
+        <footer>
+            Copyright © 2022 R. S. Doiel all rights reserved. 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </footer>
+    </body>
+</html>
