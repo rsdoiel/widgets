@@ -1,0 +1,42 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "license": "https://spdx.org/licenses/CC-BY-SA-4.0",
+    "codeRepository": "git+https://github.com/rsdoiel/widgets",
+    "dateCreated": "2022-01-03",
+    "datePublished": "2022-01-17",
+    "dateModified": "2022-01-07",
+    "downloadUrl": "https://github.com/rsdoiel/widgets/latest/release",
+    "issueTracker": "https://github.com/rsdoiel/issues",
+    "name": "Widgets",
+    "version": "0.0.1",
+    "description": "An exploration of Web Components",
+    "developmentStatus": "wip",
+    "programmingLanguage": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+    ],
+    "runtimePlatform": [
+        "web browser"
+    ],
+    "softwareRequirements": [
+        "Makefile, git"
+    ],
+    "relatedLink": [
+        "https://rsdoiel.github.io/widgets"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "@id": "https://orcid.org/0000-0003-0900-6903",
+            "givenName": "R. S.",
+            "familyName": "Doiel",
+            "email": "rsdoiel@gmail.com",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Caltech Library"
+            }
+        }
+    ]
+}
