@@ -26,7 +26,7 @@
         <section>
             <h1>A Person Input Web Component Example</h1>
             <div id="demo">
-                <p>This is a demo of an &quot;Person Object component&quot; containing a person's name and orcid as input elements. The custom element also has a "read only" attribute called "value". This returns an object with the attributes representing each file. Another attribute called "as_json" returns the JSON representation.
+                <p>This is a demo of an &quot;Person Object component&quot; containing a person's name and orcid as input elements. The custom element has what is called a "getter" and "setter" implemented using the attribute name "value". If you use <code>.value</code> to read the component it will return an object with the attributes set. Likewise if you have an object with the same attribute names and set the <code>.value</code> to an object it will update the component. This should make it easy for scripting with JavaScript. Another attribute called "as_json" returns the JSON representation.
                 </p>
                 <person-input-component given="R. S." family="Doiel" orcid="0000-0003-0900-6903"></person-input-component>
                 <p>HTML Usage:</p>
@@ -34,6 +34,21 @@
                     &lt;person-input-component given="R. S." family="Doiel"  orcid="0000-0003-0900-6903"&gt;&lt;/person-input-component&gt;
                 </code>
                 <p>JavaScript Module <a href="js/person-input-component.js">person input component</a></p>
+                <p>Example JavaScript usage
+                  <code><pre>
+let person_input = document.createElement("person-input-component"),
+    person = {};
+
+person_input.oncharge = function () {
+    person = person_input.value;
+};
+
+// ... send the update to the API and fetch it back then update
+// the input element using an assignment to ".value".
+
+person_input.value = person;
+                  </pre></code>
+                </p>
             </div>
         </section>
         <script type="module" src="js/person-input-component.js"></script>

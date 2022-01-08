@@ -92,6 +92,21 @@ class PersonInputComponent extends HTMLElement {
         return JSON.stringify(this.value);
     }
 
+    set value(obj) {
+        if (obj.given !== undefined) {
+            this.setAttribute('given', obj.given);
+            this.given_input.value = obj.given;
+        }
+        if (obj.family !== undefined) {
+            this.setAttribute('family', obj.family);
+            this.family_input.value = obj.family;
+        }
+        if (obj.orcid !== undefined) {
+            this.setAttribute('orcid', obj.orcid);
+            this.orcid_input = obj.orcid;
+        }
+    }
+
     connectedCallback() {
       let given = this.getAttribute('given'),
          family = this.getAttribute('family'),
