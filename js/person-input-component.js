@@ -15,7 +15,7 @@ template.innerHTML = `
 .person-input-component {
     width: 80%;
 }
-.grid-2 {
+.person-input-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
@@ -48,14 +48,14 @@ input:invalid {
 }
 </style>
 <div class="person-input-component">
-  <div class="grid-2">
-    <label class="one" for="given">Given Name</label>
-    <input class="two" id="given" name="given" required size="60" value="" />
+  <div class="person-input-grid-2">
+    <label for="given">Given Name</label>
+    <input id="given" name="given" required size="60" value="" />
 
-    <label class="one" for="family">Family Name</label>
-    <input class="two" id="family" name="family" required size="60" value="" />
-    <label class="one" for="orcid">ORCID</label>
-    <input class="two" id="orcid" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" 
+    <label for="family">Family Name</label>
+    <input id="family" name="family" required size="60" value="" />
+    <label for="orcid">ORCID</label>
+    <input id="orcid" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9xX]{4}" 
            name="orcid" value="" 
            size="19"
            title="e.g. 0000-0003-0900-6903"/>
@@ -69,6 +69,9 @@ class PersonInputComponent extends HTMLElement {
         this.updateGiven = this.updateGiven.bind(this);
         this.updateFamily = this.updateFamily.bind(this);
         this.updateORCID = this.updateORCID.bind(this);
+        this.given = '';
+        this.family = '';
+        this.orcid = '';
 
         let person = template.content.cloneNode(true);
 
@@ -103,34 +106,46 @@ class PersonInputComponent extends HTMLElement {
         }
         if (obj.orcid !== undefined) {
             this.setAttribute('orcid', obj.orcid);
-            this.orcid_input = obj.orcid;
+            this.orcid_input.value = obj.orcid;
         }
     }
 
     connectedCallback() {
-      let given = this.getAttribute('given'),
-         family = this.getAttribute('family'),
-         orcid = this.getAttribute('orcid');
+        let given = this.getAttribute('given'),
+            family = this.getAttribute('family'),
+            orcid = this.getAttribute('orcid');
 
-      this.given_input.value = given;
-      this.family_input.value = family;
-      this.orcid_input.value = orcid;
+        this.given_input.value = given;
+        this.family_input.value = family;
+        this.orcid_input.value = orcid;
 
-      this.given_input.addEventListener('change', this.updateGiven);
-      this.family_input.addEventListener('change', this.updateFamily);
-      this.orcid_input.addEventListener('change', this.updateORCID);
+        this.given_input.addEventListener('change', this.updateGiven);
+        this.family_input.addEventListener('change', this.updateFamily);
+        this.orcid_input.addEventListener('change', this.updateORCID);
     }
 
     updateGiven() {
-       this.setAttribute('given', this.given_input.value); 
+        this.given = this.given_input.value;
+        this.setAttribute('given', this.given_input.value); 
+        let evt = document.createEvent('HTMLEvents');
+        evt.initEvent("change", false, true);
+        this.shadowRoot.host.dispatchEvent(evt);
     }
 
     updateFamily() {
+        this.family = this.family_input.value;
         this.setAttribute('family', this.family_input.value);
+        let evt = document.createEvent('HTMLEvents');
+        evt.initEvent("change", false, true);
+        this.shadowRoot.host.dispatchEvent(evt);
     }
 
     updateORCID() {
+        this.orcid = this.orcid_input.value;
         this.setAttribute('orcid', this.orcid_input.value);
+        let evt = document.createEvent('HTMLEvents');
+        evt.initEvent("change", false, true);
+        this.shadowRoot.host.dispatchEvent(evt);
     }
 
     disconnectCallback() {

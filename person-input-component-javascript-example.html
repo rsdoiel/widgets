@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A Person Input Web Component Example</title>
+        <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
+        <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
+        <link rel="stylesheet" href="css/site.css" />
+        <style>
+            person-input-component {
+                padding: 1em;
+                width: auto;
+                height: auto;
+                display: block;
+                border: lightseagreen solid;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./">Widgets</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1>Person Input Component Test</h1>
+            <h2>Client simulation</h2>
+            <p>Change on the of elements in the client, they will be propogated to the "server"</p>
+            <person-input-component id="client" given="R. S." family="Doiel" orcid="0000-0003-0900-6903"></person-input-component>
+            <h2>Server simulation</h2>
+            <person-input-component id="server" given="" family="" orcid=""></person-input-component>
+            <h2>Example JavaScript</h2>
+            (check your browser console to see the get/set of <code>.value</code> on the component)
+            <code><pre>
+let client = document.getElementById('client'),
+    server = document.getElementById('server'),
+    obj = client.value;
+
+client.addEventListener('change', function(evt) {
+    console.log("Example exchange", client.value);
+    server.value = client.value;    
+});
+            </pre></code>
+            </div>
+        </section>
+        <script type="module" src="js/person-input-component.js"></script>
+        <script type="module">
+let client = document.getElementById('client'),
+    server = document.getElementById('server'),
+    obj = client.value;
+
+client.addEventListener('change', function(evt) {
+    console.log("Example exchange", client.value);
+    server.value = client.value;    
+});
+        </script>
+        <footer>
+            Copyright © 2022 R. S. Doiel all rights reserved. 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </footer>
+    </body>
+</html>
