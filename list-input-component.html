@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>A List Input Web Component Example</title>
+        <link rel="stylesheet" type="text/css"  href="printfonts/print.css" media="print" />
+        <link rel="stylesheet" type="text/css"  href="webfonts/fonts.css" media="screen" />
+        <link rel="stylesheet" href="css/site.css" />
+        <style>
+            person-input-component {
+                padding: 1em;
+                width: auto;
+                height: auto;
+                display: block;
+                border: lightseagreen solid;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="./">Widgets</a></li>
+            </ul>
+        </nav>
+        <section>
+            <h1>A List Input Web Component Example</h1>
+            <div id="demo">
+                <p>This is a demo of an &quot;List component&quot; that create an editable list from the JSON value passed in its "textContent" and the type of component to map the elements into indicated in its "type" attribute.  The item component type should support setting/getting using a "value" attribute/property.</p>
+                <list-input-component type="person-input-component">
+                   <person-input-component given="R. S." family="Doiel"></person-input-component>
+                   <person-input-component given="Jane" family="Doe"></person-input-component>
+                </list-input-component>
+                <p>HTML Usage:</p>
+                <code>
+                &lt;list-input-component type="person-input-component"&gt;
+                   &lt;person-input-component given="R. S." family="Doiel"&gt;&lt;/person-input-component&gt;
+                   &lt;person-input-component given="Jane." family="Doe"&gt;&lt;/person-input-component&gt;
+                &lt;/list-input-component&gt;
+                </code>
+                <p>JavaScript Module <a href="js/list-input-component.js">list input component</a></p>
+                <p>Example JavaScript usage
+                  <code><pre>
+// Example using setter/getter "value"
+let list_input = document.querySelector("list-input-component"),
+    people = [ 
+        { "given": "Jane", "family": "Doe" },
+        { "given": "Ada", "family": "Lovelace" }
+    ];
+    
+    // Update the list element to show two people
+    list_input.value = people;
+
+    // ... later "get" the list value and do something with.
+    people = list_input.value;
+                  </pre></code>
+                </p>
+            </div>
+        </section>
+        <script type="module" src="js/person-input-component.js"></script>
+        <script type="module" src="js/list-input-component.js"></script>
+        <script type="module">
+        /*
+        let list_input = document.querySelector("list-input-component"),
+            people = [
+                { "given": "Jane", "family": "Doe" },
+                { "given": "Ada", "family": "Lovelace" }
+            ],
+            person_input = document.createElement('person-input-component');
+console.log("DEBUG people: ", people);
+        for (let i = 0; i < people.length; i++) {
+            person_input.value = people[i];
+            list_input.appendChild(person_input);
+            person_input = document.createElement('person-input-component');
+        }
+        */
+        
+        </script>
+        <footer>
+            Copyright © 2022 R. S. Doiel all rights reserved. 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </footer>
+    </body>
+</html>
