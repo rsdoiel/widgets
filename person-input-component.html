@@ -34,12 +34,13 @@
                     &lt;person-input-component given="R. S." family="Doiel"  orcid="0000-0003-0900-6903"&gt;&lt;/person-input-component&gt;
                 </code>
                 <p>JavaScript Module <a href="js/person-input-component.js">person input component</a></p>
-                <p>Example JavaScript usage
+                <p>Example JavaScript usage (try this in our browser's console)
                   <code><pre>
-let person_input = document.createElement("person-input-component"),
+let person_input = document.querySelector("person-input-component"),
     person = {};
 
-person_input.oncharge = function () {
+person_input.onchange = function () {
+    console.log("DEBUG updating person object");
     person = person_input.value;
 };
 

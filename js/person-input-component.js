@@ -5,7 +5,6 @@
  * This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. 
  */
 "use strict";
-/* PersonInputComponent is an custom element performing auto-linking to an ORCID's profile. */
 
 /* This is our templated input element. It is private to the module. */
 const template = document.createElement('template');
@@ -66,28 +65,33 @@ input:invalid {
 class PersonInputComponent extends HTMLElement {
     constructor () {
         super();
-        this.updateGiven = this.updateGiven.bind(this);
-        this.updateFamily = this.updateFamily.bind(this);
-        this.updateORCID = this.updateORCID.bind(this);
-        this.given = '';
-        this.family = '';
-        this.orcid = '';
+        this.managed_attributes = [ 'given', 'family', 'orcid' ];
 
         let person = template.content.cloneNode(true);
 
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(person);
-
-        this.given_input = this.shadowRoot.getElementById('given');
-        this.family_input = this.shadowRoot.getElementById('family');
-        this.orcid_input = this.shadowRoot.getElementById('orcid');
+        let self = this;
+        for (const key of this.managed_attributes) {
+            let elem_name = `${key}_input`,
+                fnNameOnChange = `onchange_${key}`;
+            self[elem_name] = this.shadowRoot.getElementById(key);
+            self[fnNameOnChange] = function() {
+                let evt = document.createEvent('HTMLEvents');
+                evt.initEvent("change", false, true);
+                self[key] = self[elem_name].value;
+                self.setAttribute(key, self[elem_name].value);
+                this.shadowRoot.host.dispatchEvent(evt);
+            };
+            self[fnNameOnChange] = self[fnNameOnChange].bind(this);
+        }
     }
 
     get value() {
         let obj = {}
-        obj.given = this.getAttribute('given');
-        obj.family = this.getAttribute('family');
-        obj.orcid = this.getAttribute('orcid');
+        for (const key of this.managed_attributes) {
+            obj[key] = this.getAttribute(key);
+        }
         return obj;
     }
 
@@ -96,62 +100,47 @@ class PersonInputComponent extends HTMLElement {
     }
 
     set value(obj) {
-        if (obj.given !== undefined) {
-            this.setAttribute('given', obj.given);
-            this.given_input.value = obj.given;
+        let self = this;
+        for (const key of this.managed_attributes) {
+            let elem_name = `${key}_input`;
+            if (obj[key] !== undefined) {
+                this.setAttribute(key, obj[key]);
+                self[elem_name].value = obj[key];
+            }
         }
-        if (obj.family !== undefined) {
-            this.setAttribute('family', obj.family);
-            this.family_input.value = obj.family;
+    }
+
+    setAttribute(key, val) {
+        if (this.managed_attributes.indexOf(key) >= 0) {
+            let self = this,
+                elem_name =  `${key}_input`;
+            self[elem_name].value = val;
+            let evt = document.createEvent('HTMLEvents');
+            evt.initEvent("change", true, true);
+            this.shadowRoot.host.dispatchEvent(evt);
         }
-        if (obj.orcid !== undefined) {
-            this.setAttribute('orcid', obj.orcid);
-            this.orcid_input.value = obj.orcid;
-        }
+        super.setAttribute(key, val);
     }
 
     connectedCallback() {
-        let given = this.getAttribute('given'),
-            family = this.getAttribute('family'),
-            orcid = this.getAttribute('orcid');
+        let self = this;
 
-        this.given_input.value = given;
-        this.family_input.value = family;
-        this.orcid_input.value = orcid;
-
-        this.given_input.addEventListener('change', this.updateGiven);
-        this.family_input.addEventListener('change', this.updateFamily);
-        this.orcid_input.addEventListener('change', this.updateORCID);
-    }
-
-    updateGiven() {
-        this.given = this.given_input.value;
-        this.setAttribute('given', this.given_input.value); 
-        let evt = document.createEvent('HTMLEvents');
-        evt.initEvent("change", false, true);
-        this.shadowRoot.host.dispatchEvent(evt);
-    }
-
-    updateFamily() {
-        this.family = this.family_input.value;
-        this.setAttribute('family', this.family_input.value);
-        let evt = document.createEvent('HTMLEvents');
-        evt.initEvent("change", false, true);
-        this.shadowRoot.host.dispatchEvent(evt);
-    }
-
-    updateORCID() {
-        this.orcid = this.orcid_input.value;
-        this.setAttribute('orcid', this.orcid_input.value);
-        let evt = document.createEvent('HTMLEvents');
-        evt.initEvent("change", false, true);
-        this.shadowRoot.host.dispatchEvent(evt);
+        for (const key of this.managed_attributes) {
+            let val = this.getAttribute(key),
+                elem_name = `${key}_input`,
+                fnNameOnChange = `onchange_${key}`;
+            self[elem_name].value = val;
+            self[elem_name].addEventListener('change', self[fnNameOnChange]);
+        }
     }
 
     disconnectCallback() {
-        this.given_input.removeEventListener('change', this.updateGiven);
-        this.family_input.removeEventListener('change', this.updateFamily);
-        this.orcid_input.removeEventListener('change', this.updateORCID);
+        let self = this;
+        for (const key of this.managed_attributes) {
+            let elem_name = `${key}_input`,
+                fnNameOnChange = `onchange_${key}`;
+            self[elem_name].removeEventListener('change', self[fnNameOnChange]);
+        }
     }
 }
 
